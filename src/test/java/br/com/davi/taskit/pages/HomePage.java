@@ -3,10 +3,13 @@ package br.com.davi.taskit.pages;
 import br.com.davi.taskit.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends BasePage {
 
-    private By localizadorDoBotaoSignUp = By.id("signup");
+    @FindBy(id = "signup")
+    private WebElement botaoSignUp;
 
     public HomePage(WebDriver navegador) {
         super(navegador);
@@ -17,6 +20,6 @@ public class HomePage extends BasePage {
     }
 
     public void abrirPaginaDeRegistro () {
-        navegador.findElement(localizadorDoBotaoSignUp).click();
+        botaoSignUp.click();
     }
 }
