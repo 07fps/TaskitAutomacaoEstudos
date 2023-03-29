@@ -15,11 +15,15 @@ public class HomePage extends BasePage {
         super(navegador);
     }
 
-    public void acessarPaginaDoTaskit() {
+    public HomePage acessarPaginaDoTaskit() {
         navegador.get("http://www.juliodelima.com.br/taskit/");
+
+        return new HomePage(navegador);
     }
 
-    public void abrirPaginaDeRegistro () {
+    public RegistroPage abrirPaginaDeRegistro () {
         botaoSignUp.click();
+
+        return new RegistroPage(navegador);
     }
 }

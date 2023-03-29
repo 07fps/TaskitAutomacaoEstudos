@@ -24,10 +24,12 @@ public class RegistroPage extends BasePage {
         super(navegador);
     }
 
-    public void registrarNovoUsuario(String nome, String login, String senha) {
+    public SecretaPage registrarNovoUsuario(String nome, String login, String senha) {
         campoNome.sendKeys(nome);
         campoLogin.sendKeys(login);
         campoSenha.sendKeys(senha);
         botaoSalvar.click();
+
+        return new SecretaPage(navegador);
     }
 }

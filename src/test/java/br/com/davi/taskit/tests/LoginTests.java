@@ -1,11 +1,8 @@
 package br.com.davi.taskit.tests;
 
 import br.com.davi.taskit.pages.HomePage;
-import br.com.davi.taskit.pages.RegistroPage;
-import br.com.davi.taskit.pages.SecretaPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -29,17 +26,13 @@ public class LoginTests {
     @Test
     @DisplayName("Registrar um novo usuário")
     public void testRegistrarUmNovoUsuarioValido() {
+        String saudacaoAtual = new HomePage(navegador)
+                .acessarPaginaDoTaskit()
+                .abrirPaginaDeRegistro()
+                .registrarNovoUsuario("Wilson Alvess", "wilsin11111","1234")
+                .pegarASaudacao();
 
-        HomePage homePage = new HomePage(navegador);
-        homePage.acessarPaginaDoTaskit();
-        homePage.abrirPaginaDeRegistro();
-
-        RegistroPage registroPage = new RegistroPage(navegador);
-        registroPage.registrarNovoUsuario("Davi Ricardo","davir", "123456");
-
-        SecretaPage secretapage = new SecretaPage(navegador);
-        String saudacaoAtual = secretapage.pegarASaudacao();
-        Assertions.assertEquals("Hi, Davi Ricardo", saudacaoAtual);
+        Assertions.assertEquals("Hi, Wilson Alvess", saudacaoAtual);
     }
 
     @AfterEach
